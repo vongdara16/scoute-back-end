@@ -11,9 +11,9 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/restaurants', restaurantsCtrl.index)
+router.get('/restaurants', checkAuth, restaurantsCtrl.index)
 
-router.get('/restaurants/:id', restaurantsCtrl.show)
+router.get('/restaurants/:id', checkAuth, restaurantsCtrl.show)
 
 router.post('/restaurants', checkAuth, restaurantsCtrl.create)
 
