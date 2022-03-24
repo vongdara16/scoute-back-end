@@ -16,6 +16,9 @@ function create (req, res) {
   .then(restaurant => {
     restaurant.populate('author')
   })
+  .catch(err => {
+    res.json(err)
+  })
 }
 
 function deleteRestaurant(req, res) {
