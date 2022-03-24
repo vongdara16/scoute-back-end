@@ -34,7 +34,7 @@ const restaurantSchema = new mongoose.Schema({
   author: {
     type:  mongoose.Schema.Types.ObjectId,
     ref: "Profile"
-  }
+  },
 })
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
