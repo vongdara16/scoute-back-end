@@ -42,7 +42,7 @@ function show(req, res) {
 export {
   index,
   create,
-  deleteParking as parking,
+  deleteParking as delete,
   update,
   show
 }
