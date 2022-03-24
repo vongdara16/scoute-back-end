@@ -12,7 +12,7 @@ function index(req, res) {
 
 function create (req, res) {
   req.body.author = req.user.profile
-  Restaurant.create(req.bosy)
+  Restaurant.create(req.body)
   .then(restaurant => {
     restaurant.populate('author')
   })
