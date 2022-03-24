@@ -1,8 +1,8 @@
-import { Restroom } from '../models/restroom'
+import { Restroom } from '../models/restroom.js'
 
 function index (req, res) {
   Restroom.find({})
-  .then(restooms => {
+  .then(restrooms => {
     res.json(restrooms)
   })
   .catch(err => {
