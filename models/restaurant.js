@@ -22,10 +22,16 @@ const restaurantSchema = new mongoose.Schema({
     required: true,
   },
   price: {
+    type: String,
+    min: 1,
+    max: 4,
+    required: true,
+  },
+  rating: {
     type: Number,
     min: 1,
     max: 5,
-    required: true,
+    required: true
   },
   review: {
     type:  mongoose.Schema.Types.ObjectId,
