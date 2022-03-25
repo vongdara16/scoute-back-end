@@ -1,4 +1,5 @@
 import { Restaurant } from '../models/restaurant.js'
+import { Review } from '../models/review.js'
 
 function index(req, res) {
   Restaurant.find({})
@@ -35,6 +36,7 @@ function update(req, res) {
 
 function show(req, res) {
   Restaurant.findById(req.params.id)
+  .then(Review.find({_id}))
   .then(restaurant => res.json(restaurant))
   .catch(err => res.json(err))
 }
