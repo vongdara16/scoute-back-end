@@ -1,4 +1,5 @@
 import { Parking } from '../models/parking.js'
+import { Review } from '../models/review.js'
 
 function index (req, res) {
   Parking.find({})
@@ -35,6 +36,7 @@ function update(req, res) {
 
 function show(req, res) {
   Parking.findById(req.params.id)
+  .then(Review.find({_id}))
   .then(parkinglot => res.json(parkinglot))
   .catch(err => res.json(err))
 }
