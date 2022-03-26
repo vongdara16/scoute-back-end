@@ -5,6 +5,11 @@ import cors from 'cors'
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
+import { router as restaurantsRouter } from './routes/restaurants.js'
+import { router as restroomsRouter } from './routes/restrooms.js'
+import { router as parkinglotsRouter } from './routes/parkinglots.js'
+import { router as reviewsRouter } from './routes/reviews.js'
+
 
 import('./config/database.js')
 
@@ -14,6 +19,7 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 
+app.use('/', restaurantsRouter, restroomsRouter, parkinglotsRouter, reviewsRouter)
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
 
