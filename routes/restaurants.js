@@ -11,15 +11,15 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/restaurants', checkAuth, restaurantsCtrl.index)
+router.get('/', checkAuth, restaurantsCtrl.index)
 
-router.get('/restaurants/:id', checkAuth, restaurantsCtrl.show)
+router.get('/:id', checkAuth, restaurantsCtrl.show)
 
-router.post('/restaurants', checkAuth, restaurantsCtrl.create)
+router.post('/', checkAuth, restaurantsCtrl.create)
 
-router.put('/restaurants/:id', checkAuth, restaurantsCtrl.update)
+router.put('/:id', checkAuth, restaurantsCtrl.update)
 
-router.delete('/restaurants/:id', checkAuth, restaurantsCtrl.delete)
+router.delete('/:id', checkAuth, restaurantsCtrl.delete)
 
 export {
   router
