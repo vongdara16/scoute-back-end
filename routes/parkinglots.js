@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as parkinglotsCtrl from '../controllers/parkinglots.js'
-import { decodeUserFromToken, checkAuth } from "../middleware/auth";
+import { decodeUserFromToken, checkAuth } from "../middleware/auth.js";
 
 const router = Router()
 
