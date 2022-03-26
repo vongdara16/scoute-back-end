@@ -5,6 +5,9 @@ import cors from 'cors'
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
+import { router as restaurantsRouter } from './routes/restaurants.js'
+import { router as restroomsRouter } from './routes/restrooms.js'
+import { router as parkinglotsRouter } from './routes/parkinglots.js'
 
 import('./config/database.js')
 
