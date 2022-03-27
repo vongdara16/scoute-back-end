@@ -2,6 +2,8 @@ import { Restaurant } from '../models/restaurant.js'
 import { Review } from '../models/review.js'
 
 function index(req, res) {
+  console.log('test index')
+  //able to reach this console log. api needs to be called
   Restaurant.find({})
   .then(restaurants => {
     res.json(restaurants)
