@@ -11,7 +11,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/', checkAuth, restaurantsCtrl.index)
+router.get('/:search', checkAuth, restaurantsCtrl.getAll)
 
 router.get('/:id', checkAuth, restaurantsCtrl.show)
 
