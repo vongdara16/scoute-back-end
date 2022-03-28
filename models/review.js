@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const reviewSchema = new mongoose.Schema({
-  author: {
+  name: {
     type:  mongoose.Schema.Types.ObjectId,
     ref: "Profile"
   },

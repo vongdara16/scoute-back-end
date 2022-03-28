@@ -5,7 +5,7 @@ import { Review } from '../models/review.js'
 const BASE_URL = 'https://api.yelp.com/v3/businesses/search?type=restaurant&location='
 
 async function getAll(req, res) {
-  console.log('THIS IS THE ZIPCODE', req.params.search)
+  // console.log('THIS IS THE ZIPCODE', req.params.search)
   const search = req.params.search
   const URL = BASE_URL+search
   const result = await axios({
