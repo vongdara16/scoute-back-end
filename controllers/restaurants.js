@@ -1,16 +1,21 @@
+import axios from 'axios'
 import { Restaurant } from '../models/restaurant.js'
 import { Review } from '../models/review.js'
 
-function index(req, res) {
-  console.log('test index')
-  //able to reach this console log. api needs to be called
-  Restaurant.find({})
-  .then(restaurants => {
-    res.json(restaurants)
+const BASE_URL = 'https://api.yelp.com/v3/businesses/search?type=restaurant&location='
+
+async function getAll(req, res) {
+  console.log('THIS IS THE ZIPCODE', req.params.search)
+  const search = req.params.search
+  const URL = BASE_URL+search
+  const result = await axios({
+    url: URL,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`
+    }
   })
-  .catch(err => {
-    res.json(err)
-  })
+  res.json({restaurants: result.data.businesses})
 }
 
 function create (req, res) {
@@ -44,7 +49,7 @@ function show(req, res) {
 }
 
 export {
-  index, 
+  getAll, 
   create,
   deleteRestaurant as delete,
   update,

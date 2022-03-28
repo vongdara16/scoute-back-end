@@ -19,8 +19,8 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 
-app.use('/restaurants', restaurantsRouter)
 app.use('/', restroomsRouter, parkinglotsRouter, reviewsRouter)
+app.use('/api/restaurants', restaurantsRouter)
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
 
