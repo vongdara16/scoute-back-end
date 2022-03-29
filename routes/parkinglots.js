@@ -11,7 +11,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/', checkAuth, parkinglotsCtrl.index)
+router.get('/:search', checkAuth, parkinglotsCtrl.index)
 
 router.get('/:id', checkAuth, parkinglotsCtrl.show)
 

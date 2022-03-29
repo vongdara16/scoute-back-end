@@ -1,14 +1,21 @@
-import { Parking } from '../models/parking.js'
+import { Parking } from '../models/parkinglot.js'
 import { Review } from '../models/review.js'
 import { v2 as cloudinary } from 'cloudinary'
 
 function index (req, res) {
+  const search = req.params.search
+  const pARR= []
   Parking.find({})
   .then(parkinglot => {
-    res.json(parkinglot)
+    parkinglot.forEach(parking => {
+      if (parking.city === search) {
+        pARR.push(parking)
+      }
+    })
+    return res.json(pARR)
   })
   .catch(err => {
-    res.json
+    res.json(err)
   })
 }
 
