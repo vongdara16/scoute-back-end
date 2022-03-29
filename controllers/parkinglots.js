@@ -12,10 +12,14 @@ function index (req, res) {
 }
 
 function create (req, res) {
+  console.log('create parking lot hit',req.body)
   req.body.author = req.user.profile
   Parking.create(req.body)
   .then(parkinglot => {
     parkinglot.populate('author')
+    .then(populatedParking => {
+      res.json(populatedParking)
+    })
   })
   .catch(err => {
     res.json(err)
