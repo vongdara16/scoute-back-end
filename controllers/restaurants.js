@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Restaurant } from '../models/restaurant.js'
 import { Review } from '../models/review.js'
+import { v2 as cloudinary } from 'cloudinary'
 
 const BASE_URL = 'https://api.yelp.com/v3/businesses/search?type=restaurant&location='
 
@@ -18,20 +19,52 @@ async function getAll(req, res) {
   res.json({restaurants: result.data.businesses})
 }
 
-function create (req, res) {
-  console.log('TEST CREATE')
-  console.log(req.body)
+// function create (req, res) {
+//   req.body.author = req.user.profile
+//   Restaurant.create(req.body)
+//   .then(restaurant => {
+//     restaurant.populate('author')
+//     .then(populatedRestaurant => {
+//       res.status(201).json(populatedRestaurant)
+//     })
+//   })
+//   .catch(err => {
+//     res.json(err)
+//   })
+// }
+function create(req, res) {
   req.body.author = req.user.profile
-  Restaurant.create(req.body)
-  .then(restaurant => {
-    restaurant.populate('author')
-    .then(populatedRestaurant => {
-      res.status(201).json(populatedRestaurant)
+  if (req.body.photo === 'undefined' || !req.files['photo']) {
+    delete req.body['photo']
+    Restaurant.create(req.body)
+    .then(restaurant => {
+      restaurant.populate('author')
+      .then(populatedRestaurant => {
+        res.status(201).json(populatedRestaurant)
+      })
     })
-  })
-  .catch(err => {
-    res.json(err)
-  })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+  } else {
+    const imageFile = req.files.photo.path
+    cloudinary.uploader.upload(imageFile, {tags: `${req.body.name}`})
+    .then(image => {
+      req.body.photo = image.url
+      Restaurant.create(req.body)
+      .then(restaurant => {
+        restaurant.populate('author')
+        .then(populatedRestaurant => {
+          res.status(201).json(populatedRestaurant)
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json(err)
+      })
+    })
+  }
 }
 
 function deleteRestaurant(req, res) {
