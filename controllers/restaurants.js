@@ -25,6 +25,9 @@ function create (req, res) {
   Restaurant.create(req.body)
   .then(restaurant => {
     restaurant.populate('author')
+    .then(populatedRestaurant => {
+      res.status(201).json(populatedRestaurant)
+    })
   })
   .catch(err => {
     res.json(err)
