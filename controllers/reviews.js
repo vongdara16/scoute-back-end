@@ -34,8 +34,11 @@ function deleteReview(req, res) {
 // }
 
 async function getRestaurantReviews(req, res) {
-  const reviews = req.params.id
+  console.log('TESTING THIS FUNCTION')
+  console.log(req.params)
+  const reviews = req.params.restaurantId
   const URL = `https://api.yelp.com/v3/businesses/${reviews}/reviews`
+
   const result = await axios({
     url: URL,
     method: 'GET',
@@ -43,8 +46,9 @@ async function getRestaurantReviews(req, res) {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
   })
-  res.json({reviews: result})
-  console.log(result);
+  console.log('RESULTS', result.data.reviews)
+  res.json({reviews: result.data.reviews})
+
 }
 
 export {
