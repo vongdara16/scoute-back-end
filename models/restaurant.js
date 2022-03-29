@@ -33,6 +33,9 @@ const restaurantSchema = new mongoose.Schema({
     max: 5,
     required: true
   },
+  photo: {
+    type: String
+  },
   review: {
     type:  mongoose.Schema.Types.ObjectId,
     ref: "Review"
