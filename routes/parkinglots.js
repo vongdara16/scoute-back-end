@@ -11,15 +11,15 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/parkinglots', checkAuth, parkinglotsCtrl.index)
+router.get('/', checkAuth, parkinglotsCtrl.index)
 
-router.get('/parkinglots/:id', checkAuth, parkinglotsCtrl.show)
+router.get('/:id', checkAuth, parkinglotsCtrl.show)
 
-router.post('/parkinglots', checkAuth, parkinglotsCtrl.create)
+router.post('/', checkAuth, parkinglotsCtrl.create)
 
-router.put('/parkinglots/:id', checkAuth, parkinglotsCtrl.update)
+router.put('/:id', checkAuth, parkinglotsCtrl.update)
 
-router.delete('/parkinglots/:id', checkAuth, parkinglotsCtrl.delete)
+router.delete('/:id', checkAuth, parkinglotsCtrl.delete)
 
 export {
   router
