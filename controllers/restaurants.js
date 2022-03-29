@@ -19,6 +19,8 @@ async function getAll(req, res) {
 }
 
 function create (req, res) {
+  console.log('TEST CREATE')
+  console.log(req.body)
   req.body.author = req.user.profile
   Restaurant.create(req.body)
   .then(restaurant => {
