@@ -21,10 +21,11 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(formData.parse())
 
-app.use('/', restroomsRouter, reviewsRouter)
+app.use('/', restroomsRouter)
 app.use('/api/parkinglots', parkinglotsRouter)
 app.use('/api/restaurants', restaurantsRouter)
 app.use('/api/profiles', profilesRouter)
+app.use('/api/reviews', reviewsRouter)
 app.use('/api/auth', authRouter)
 
 app.use(function (req, res, next) {
