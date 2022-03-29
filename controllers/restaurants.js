@@ -6,7 +6,6 @@ import { v2 as cloudinary } from 'cloudinary'
 const BASE_URL = 'https://api.yelp.com/v3/businesses/search?type=restaurant&location='
 
 async function getAll(req, res) {
-  // console.log('THIS IS THE ZIPCODE', req.params.search)
   const search = req.params.search
   const URL = BASE_URL+search
   const result = await axios({
@@ -19,19 +18,6 @@ async function getAll(req, res) {
   res.json({restaurants: result.data.businesses})
 }
 
-// function create (req, res) {
-//   req.body.author = req.user.profile
-//   Restaurant.create(req.body)
-//   .then(restaurant => {
-//     restaurant.populate('author')
-//     .then(populatedRestaurant => {
-//       res.status(201).json(populatedRestaurant)
-//     })
-//   })
-//   .catch(err => {
-//     res.json(err)
-//   })
-// }
 function create(req, res) {
   req.body.author = req.user.profile
   if (req.body.photo === 'undefined' || !req.files['photo']) {

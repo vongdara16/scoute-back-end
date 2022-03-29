@@ -12,7 +12,7 @@ function index (req, res) {
 }
 
 function create (req, res) {
-  console.log('create parking lot hit',req.body)
+  // console.log('create parking lot hit',req.body)
   req.body.author = req.user.profile
   Parking.create(req.body)
   .then(parkinglot => {
