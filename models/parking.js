@@ -41,6 +41,9 @@ const parkingSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  photo: {
+    type: String
+  },
   review: {
     type:  mongoose.Schema.Types.ObjectId,
     ref: "Review"
