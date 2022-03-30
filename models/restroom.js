@@ -33,6 +33,9 @@ const restroomSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  restroomId: {
+    type: String
+  }
 })
 
 const Restroom = mongoose.model('Restroom', restroomSchema)
