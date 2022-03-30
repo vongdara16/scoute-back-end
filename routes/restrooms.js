@@ -11,7 +11,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
-router.get('/restrooms', checkAuth, restroomsCtrl.index)
+router.get('/:lat/:lng', checkAuth, restroomsCtrl.getAll)
 
 router.get('/restrooms/:id', checkAuth, restroomsCtrl.show)
 
