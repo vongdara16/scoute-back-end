@@ -25,6 +25,10 @@ const parkingSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  isPaved: {
+    type: Boolean,
+    required: true
+  },
   lightQuality: {
     type: Number,
     min: 1,
