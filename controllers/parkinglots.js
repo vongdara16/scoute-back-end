@@ -13,6 +13,7 @@ function index (req, res) {
       }
     })
     return res.json(pARR)
+      // return pARR.forEach(park => res.json(park))
   })
   .catch(err => {
     res.json(err)
