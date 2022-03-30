@@ -19,22 +19,6 @@ function index (req, res) {
   })
 }
 
-
-// function create (req, res) {
-//   console.log('create parking lot hit',req.body)
-//   req.body.author = req.user.profile
-//   Parking.create(req.body)
-//   .then(parkinglot => {
-//     parkinglot.populate('author')
-//     .then(populatedParking => {
-//       res.json(populatedParking)
-//     })
-//   })
-//   .catch(err => {
-//     res.json(err)
-//   })
-// }
-
 function create(req, res) {
   req.body.author = req.user.profile
   if (req.body.photo === 'undefined' || !req.files['photo']) {

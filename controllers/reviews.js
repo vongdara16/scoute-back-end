@@ -23,19 +23,7 @@ function deleteReview(req, res) {
   .catch(err => res.json(err))
 }
 
-// function getRestaurantReviews (req, res) {
-//   Parking.find({})
-//   .then(parkinglot => {
-//     res.json(parkinglot)
-//   })
-//   .catch(err => {
-//     res.json
-//   })
-// }
-
 async function getRestaurantReviews(req, res) {
-  console.log('TESTING THIS FUNCTION')
-  console.log(req.params)
   const reviews = req.params.restaurantId
   const URL = `https://api.yelp.com/v3/businesses/${reviews}/reviews`
 
@@ -46,7 +34,6 @@ async function getRestaurantReviews(req, res) {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
   })
-  console.log('RESULTS', result.data.reviews)
   res.json({reviews: result.data.reviews})
 
 }
