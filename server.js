@@ -21,7 +21,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(formData.parse())
 
-app.use('/', restroomsRouter)
+app.use('/api/restrooms', restroomsRouter)
 app.use('/api/parkinglots', parkinglotsRouter)
 app.use('/api/restaurants', restaurantsRouter)
 app.use('/api/profiles', profilesRouter)

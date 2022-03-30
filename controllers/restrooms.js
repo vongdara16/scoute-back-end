@@ -1,5 +1,20 @@
+import axios from 'axios'
 import { Restroom } from '../models/restroom.js'
 import { Review } from '../models/review.js'
+import {v2 as cloudinary } from 'cloudinary'
+
+const BASE_URL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat='
+
+async function getAll(req, res) {
+  const LAT = req.params.lat
+  const LNG = req.params.lng
+  const URL = `${BASE_URL}${LAT}&lng=${LNG}`
+  const result = await axios({
+    url: URL,
+    method: 'GET',
+  })
+  res.json(result.data)
+}
 
 function index (req, res) {
   Restroom.find({})
@@ -10,6 +25,7 @@ function index (req, res) {
     res.json
   })
 }
+
 
 function create (req, res) {
   req.body.author = req.user.profile
@@ -47,4 +63,5 @@ export {
   deleteRestroom as  delete,
   update,
   show,
+  getAll,
 }
