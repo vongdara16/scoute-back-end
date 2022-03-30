@@ -48,7 +48,6 @@ async function getRestaurantReviews(req, res) {
       res.json({reviews: revArr})
     })
   } else {
-
     const result = await axios({
       url: URL,
       method: 'GET',
