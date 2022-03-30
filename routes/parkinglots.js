@@ -17,7 +17,7 @@ router.get('/:id', checkAuth, parkinglotsCtrl.show)
 
 router.post('/', checkAuth, parkinglotsCtrl.create)
 
-router.put('/:id', checkAuth, parkinglotsCtrl.update)
+router.put('/:id/edit', checkAuth, parkinglotsCtrl.update)
 
 router.delete('/:id', checkAuth, parkinglotsCtrl.delete)
 
