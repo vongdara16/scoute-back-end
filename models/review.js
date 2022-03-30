@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const reviewSchema = new mongoose.Schema({
-  name: {
+  author: {
     type:  mongoose.Schema.Types.ObjectId,
     ref: "Profile"
   },
@@ -17,7 +17,7 @@ const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Parking"
   },
-  content: {
+  text: {
     type: String,
     required: true,
   }, 
@@ -27,6 +27,9 @@ const reviewSchema = new mongoose.Schema({
     max: 5,
     required: true,
   },
+  yelprestaurant: {
+    type: String
+  }
 },{
   timestamps: true,
 })
