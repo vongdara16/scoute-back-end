@@ -3,6 +3,9 @@ import axios from 'axios'
 
 function create(req, res) {
   req.body.author = req.user.profile
+  if(req.body.restaurant === ''){
+    delete req.body['restaurant']
+  }
   Review.create(req.body)
   .then(review => {
     review.populate('author')
@@ -53,18 +56,16 @@ async function getRestaurantReviews(req, res) {
         Authorization: `Bearer ${process.env.YELP_API_KEY}`
       }
     })
-  
-    Review.find({})
-    .populate('author')
-    .then(reviews => {
-      reviews.forEach(review => {
-        if (review.yelprestaurant === req.params.restaurantId){
-          result.data.reviews.unshift(review)
-        }
+      Review.find({})
+      .populate('author')
+      .then(reviews => {
+        reviews.forEach(review => {
+          if (review.yelprestaurant === req.params.restaurantId){
+            result.data.reviews.unshift(review)
+          }
+        })
+        res.json({reviews: result.data.reviews})
       })
-      res.json({reviews: result.data.reviews})
-    })
-
   }
 }
 
