@@ -36,7 +36,7 @@ async function getAll(req, res) {
   .populate('author')
   .then(restaurants => {
     restaurants.forEach(restaurant => {
-      if(restaurant.city.toLowerCase() === req.params.search.toLowerCase()) {
+      if(restaurant.city.toLowerCase() === search.toLowerCase()) {
         result.data.businesses.unshift(restaurant)
       }
     })
