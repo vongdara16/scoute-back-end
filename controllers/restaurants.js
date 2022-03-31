@@ -17,14 +17,12 @@ async function getAllByGeo(req, res) {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     },
   })
-  console.log(result.data.businesses);
   res.json({restaurants: result.data.businesses})
 }
 
 async function getAll(req, res) {
   const search = req.params.search
   const URL = BASE_URL+search
-  const restaurantArr = []
   const result = await axios({
     url: URL,
     method: 'GET',
