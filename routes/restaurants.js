@@ -13,6 +13,8 @@ router.use(decodeUserFromToken)
 
 router.get('/:search', checkAuth, restaurantsCtrl.getAll)
 
+router.get('/:lat/:lng', checkAuth, restaurantsCtrl.getAllByGeo)
+
 router.get('/:id', checkAuth, restaurantsCtrl.show)
 
 router.post('/', checkAuth, restaurantsCtrl.create)
