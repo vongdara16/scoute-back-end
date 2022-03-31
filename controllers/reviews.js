@@ -70,9 +70,9 @@ async function getRestaurantReviews(req, res) {
 }
 
 async function getRestroomReviews(req, res) {
-  console.log('THIS IS THE RESTROOM FUNC')
-  console.log('REQ BODY', req.body)
-  console.log('REQ PARAMS', req.params)
+  // console.log('THIS IS THE RESTROOM FUNC')
+  // console.log('REQ BODY', req.body)
+  // console.log('REQ PARAMS', req.params)
   const reviewArr = []
   Review.find({})
   .populate('author')
