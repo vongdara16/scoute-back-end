@@ -4,6 +4,22 @@ import { Review } from '../models/review.js'
 import { v2 as cloudinary } from 'cloudinary'
 
 const BASE_URL = 'https://api.yelp.com/v3/businesses/search?type=restaurant&location='
+const GEO_URL = 'https://api.yelp.com/v3/businesses/search?latitude='
+
+async function getAllByGeo(req, res) {
+  const LAT = req.params.lat
+  const LNG = req.params.lng
+  const URL = `${GEO_URL}${LAT}&longitude=${LNG}`
+  const result = await axios({
+    url: URL,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`
+    },
+  })
+  console.log(result.data.businesses);
+  res.json({restaurants: result.data.businesses})
+}
 
 async function getAll(req, res) {
   const search = req.params.search
@@ -74,6 +90,7 @@ function show(req, res) {
 
 export {
   getAll, 
+  getAllByGeo,
   create,
   deleteRestaurant as delete,
   update,
