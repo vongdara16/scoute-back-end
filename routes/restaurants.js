@@ -19,10 +19,6 @@ router.get('/:id', checkAuth, restaurantsCtrl.show)
 
 router.post('/', checkAuth, restaurantsCtrl.create)
 
-router.put('/:id', checkAuth, restaurantsCtrl.update)
-
-router.delete('/:id', checkAuth, restaurantsCtrl.delete)
-
 export {
   router
 }
