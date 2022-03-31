@@ -15,12 +15,6 @@ router.get('/:lat/:lng', checkAuth, restroomsCtrl.getAll)
 
 router.get('/restrooms/:id', checkAuth, restroomsCtrl.show)
 
-router.post('/restrooms', checkAuth, restroomsCtrl.create)
-
-router.put('/restrooms/:id', checkAuth, restroomsCtrl.update)
-
-router.delete('/restrooms/:id', checkAuth, restroomsCtrl.delete)
-
 export {
   router
 }
