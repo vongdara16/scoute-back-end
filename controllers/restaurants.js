@@ -24,6 +24,7 @@ async function getAllByGeo(req, res) {
 async function getAll(req, res) {
   const search = req.params.search
   const URL = BASE_URL+search
+  const restaurantArr = []
   const result = await axios({
     url: URL,
     method: 'GET',
@@ -31,7 +32,16 @@ async function getAll(req, res) {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
   })
-  res.json({restaurants: result.data.businesses})
+  Restaurant.find({})
+  .populate('author')
+  .then(restaurants => {
+    restaurants.forEach(restaurant => {
+      if(restaurant.city === req.params.search) {
+        result.data.businesses.unshift(restaurant)
+      }
+    })
+    res.json({restaurants: result.data.businesses})
+  })
 }
 
 function create(req, res) {
