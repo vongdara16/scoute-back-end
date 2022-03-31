@@ -29,6 +29,9 @@ const reviewSchema = new mongoose.Schema({
   },
   yelprestaurant: {
     type: String
+  },
+  restroomId: {
+    type: String
   }
 },{
   timestamps: true,
