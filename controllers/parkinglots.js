@@ -9,7 +9,7 @@ function index (req, res) {
   Parking.find({})
   .then(parkinglot => {
     parkinglot.forEach(parking => {
-      if (parking.city === search) {
+      if (parking.city.toLowerCase() === search.toLowerCase()) {
         pARR.push(parking)
       }
     })
